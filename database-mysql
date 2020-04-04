@@ -1,0 +1,19 @@
+CREATE DATABASE dbpegawai;
+USE dbpegawai;
+CREATE TABLE Departement(
+    ID_Dept varchar(5) not null,
+    Nama_Dept varchar(20) not null,
+    PRIMArY KEY (ID_Dept)
+);
+CREATE TABLE Pegawai(
+	ID_Peg int(5) not null,
+    Nama_Peg varchar(20) not null,
+    Alamat varchar(20) not null,
+    ID_Dept varchar(5) not null,
+    PRIMARY KEY (ID_Peg),
+    FOREIGN KEY (ID_Dept) REFERENCES Departement(ID_Dept)
+);
+
+INSERT INTO `Departement`(`ID_Dept`, `Nama_Dept`) VALUES ("A001","IT"), ("A002","Keuangan"), ("A003","HRD"), ("A004","Pemasaran");
+
+INSERT INTO `Pegawai`(`ID_Peg`, `Nama_Peg`, `Alamat`, `ID_Dept`) VALUES ("101","Putu Ayu","Buleleng","A001"), ("102","Made Sakti","Tabanan","A001"), ("103","Gede Bagus","Gianyar","A002"), ("104","Wayan Asli","Denpasar","A003"), ("105","Komang Buyung","Denpasar","A002");
