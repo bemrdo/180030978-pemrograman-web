@@ -6,7 +6,7 @@
     include "koneksi.php";
     //query select data pada database berdasarkan nim
     $qry = "select * from Pegawai where ID_Peg = '$ID_Peg'";
-    $exec = mysqli_query($con,$qry);
+    $exec = mysqli_query($con, $qry);
     $data = mysqli_fetch_assoc($exec);
 ?>
 <!DOCTYPE html>
