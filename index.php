@@ -12,6 +12,7 @@
         <div class="container">
             <h1 class="is-size-3 has-text-weight-semibold">Informasi Data Pegawai</h1>
             <a class="button is-warning has-text-dark is-rounded" href="biodata_pegawai.php">Tambah Data</a>
+            &nbsp;
             <a class="button is-warning has-text-dark is-rounded" href="cari_pegawai.php">Cari Data</a>
         </div>
     </div>

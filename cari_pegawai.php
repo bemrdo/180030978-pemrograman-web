@@ -11,7 +11,6 @@
         //query select data pada database berdasarkan nim
         $qry = "select * from Pegawai a inner join Departement b on a.ID_Dept = b.ID_Dept where Nama_Peg = '$nama'";
         $exec = mysqli_query($con, $qry);
-        //$data = mysqli_fetch_array($exec);
         return $exec;
     }
 ?>
@@ -53,9 +52,14 @@
                 </div>
             </div>
             <?php
-                if (isset($cari)){
+            if (isset($cari)){
+                $found = mysqli_num_rows($cari);
+                if ($found == 0){
             ?>
-            <div class="title has-text-centered">Biodata Pegawai</div>
+            <div class="subtitle has-text-centered">Data tidak ditemukan</div>
+            <?php
+                } else {
+            ?>
             <table class="table is-hoverable is-fullwidth">
                 <thead>
                     <tr>
@@ -67,20 +71,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        while($hasil = mysqli_fetch_array($cari)){
-                    ?>
-                    <tr>
-                        <td><?php echo $hasil['ID_Peg'] ?></td>
-                        <td><?php echo $hasil['Nama_Peg'] ?></td>
-                        <td><?php echo $hasil['Alamat'] ?></td>
-                        <td><?php echo $hasil['ID_Dept'] ?></td>
-                        <td><?php echo $hasil['Nama_Dept'] ?></td>
-                    </tr>
-                    <?php
-                        }
+            <?php
+                    while($hasil = mysqli_fetch_array($cari)){
+            ?>
+            <tr>
+                <td><?php echo $hasil['ID_Peg'] ?></td>
+                <td><?php echo $hasil['Nama_Peg'] ?></td>
+                <td><?php echo $hasil['Alamat'] ?></td>
+                <td><?php echo $hasil['ID_Dept'] ?></td>
+                <td><?php echo $hasil['Nama_Dept'] ?></td>
+            </tr>
+            <?php
                     }
-                    ?>
+                }
+            }
+            ?>
                 </tbody>
             </table>
         </form>
